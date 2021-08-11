@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { TodoModule } from './todo/todo.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
       logging: true,
       keepConnectionAlive: true,
     }),
+    TodoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
