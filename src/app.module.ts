@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
+import { Todo } from './todo/entities/todo.entity';
 import { TodoModule } from './todo/todo.module';
 
 @Module({
@@ -16,7 +17,7 @@ import { TodoModule } from './todo/todo.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [],
+      entities: [Todo],
       synchronize: true,
       logging: true,
       keepConnectionAlive: true,
