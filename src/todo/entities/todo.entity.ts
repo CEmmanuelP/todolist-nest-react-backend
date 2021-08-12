@@ -15,7 +15,7 @@ export class Todo {
   title: string;
 
   @Column('varchar')
-  description: string;
+  desc: string;
 
   @Column('boolean', { default: false })
   isDone: boolean;

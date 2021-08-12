@@ -10,7 +10,7 @@ export class TodoService {
     @InjectRepository(Todo) private readonly todoRepository: Repository<Todo>,
   ) {}
 
-  async createTodo(CreateTodoDto: CreateTodoDto) {
-    return await this.todoRepository.save(CreateTodoDto);
+  async createTodo(createTodoDto: CreateTodoDto) {
+    return await this.todoRepository.save(createTodoDto);
   }
 }
