@@ -11,9 +11,10 @@ export class TodoService {
   ) {}
 
   async createTodo(createTodoDto: CreateTodoDto) {
-    // type check
-
-    //create
     return await this.todoRepository.save(createTodoDto);
+  }
+
+  async getTodos() {
+    return await this.todoRepository.find();
   }
 }
