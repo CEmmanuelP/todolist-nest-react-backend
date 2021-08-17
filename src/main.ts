@@ -6,7 +6,13 @@ import { AppModule } from './app.module';
 declare const module: any;
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    // CORS 허용
+    cors: {
+      origin: process.env.FRONT_URL,
+      credentials: true,
+    },
+  });
   // read
   app.useGlobalPipes(new ValidationPipe());
 
@@ -20,7 +26,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000);
+  await app.listen(+process.env.BACK_PORT);
 
   if (module.hot) {
     module.hot.accept();

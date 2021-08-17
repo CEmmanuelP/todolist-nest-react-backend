@@ -43,6 +43,11 @@ export class TodoController {
     required: true,
     description: 'todo id',
   })
+  @ApiResponse({
+    status: 200,
+    description: 'todo modify',
+    type: Todo,
+  })
   @Put(':todoId')
   async updateTodo(
     @Param() param: { todoId: string },
@@ -56,8 +61,28 @@ export class TodoController {
     required: true,
     description: 'todo id',
   })
+  @ApiResponse({
+    status: 200,
+    description: 'todo delete',
+    type: Todo,
+  })
   @Delete(':todoId')
   async deleteTodo(@Param() param: { todoId: string }) {
     return await this.todoService.deleteTodo(param);
+  }
+
+  @ApiParam({
+    name: 'todoId',
+    required: true,
+    description: 'todo id',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'todo success',
+    type: Todo,
+  })
+  @Put('complete/:todoId')
+  async toggleComplete(@Param() param: { todoId: string }) {
+    return await this.todoService.toggleComplete(param);
   }
 }
